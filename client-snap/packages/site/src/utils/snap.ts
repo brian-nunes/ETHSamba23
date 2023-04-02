@@ -57,11 +57,8 @@ export const getSnap = async (version?: string): Promise<Snap | undefined> => {
 export const sendSignature = async (_message: string, _address: string): Promise<void> => {
   await window.ethereum.request({
     method: 'wallet_invokeSnap',
-    params: { snapId: defaultSnapOrigin, request: { method: 'send_signature' }, itens: {message: _message, address: _address} }
+    params: [defaultSnapOrigin, { method: 'send_signature', messageToSend: _message, addressToSend: _address}]
   });
-
-
-  
 };
 
 export const isLocalSnap = (snapId: string) => snapId.startsWith('local:');

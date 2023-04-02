@@ -15,8 +15,6 @@ import {
   QrCodeCard,
 } from '../components';
 
-import Convert from 'convert-svg-react';
-
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -133,7 +131,7 @@ const Index = () => {
       const QRCode = require('qrcode');
 
       const contract = "ugabugaugabuga"
-      const code = 'ethereum:'+contract+'?amount=1&message='+message;
+      const code = 'ethereum:'+contract+'?amount=0&message='+message;
       setQrCodeGenerated(true);
 
       QRCode.toString(code, {

@@ -123,12 +123,35 @@ const Index = () => {
     setQrCodeImage(e.target.files[0]);
   }
 
-  const handleSendQrCode = async () => {
-    const qrcode = await qrcodeParser(qrCodeImage ? qrCodeImage : '');
-    const address = qrcode.split("?",1)[0].split(":",2)[1];
-    const message = qrcode.split("=", 3)[2];
+  const handleSendQrCode = async () => {7
+    try{
+      const qrcode = await qrcodeParser(qrCodeImage ? qrCodeImage : '');
+      const address = qrcode.split("?",1)[0].split(":",2)[1];
+      const message = qrcode.split("=", 3)[2];
 
-    await sendSignature(message, address);
+
+      const [ from ] = await window.ethereum.request({
+        method: 'eth_requestAccounts'
+      }) as string[];
+
+      if(!from){
+        throw new Error('Fail to get accounts')
+      }
+
+      await window.ethereum.request({
+        method: 'eth_sendTransaction',
+        params: [
+          {
+            from,
+            to: address,
+            value: '0x0',
+            data: message
+          }
+        ]
+      });
+    } catch(e){
+      console.log(e);
+    }
   }
 
   return (
@@ -140,11 +163,6 @@ const Index = () => {
         Send your QR Code through the button below!
       </Subtitle>
       <CardContainer>
-        {/* {state.error && (
-          <ErrorMessage>
-            <b>An error happened:</b> {state.error.message}
-          </ErrorMessage>
-        )} */}
         {!state.installedSnap && (
           <Card
             content={{

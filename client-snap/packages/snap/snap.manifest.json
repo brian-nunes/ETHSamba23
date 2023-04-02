@@ -7,7 +7,7 @@
     "url": "https://github.com/brian-nunes/QR-Code-Metamask.git"
   },
   "source": {
-    "shasum": "TpcbghgKQRRbCpmQ2vdNCcRpf+JXRujhPhTf9pBUci8=",
+    "shasum": "tJivVAoGHf2E+ph/uPToR4P7/wQNFZPOW3+2W3d6fwQ=",
     "location": {
       "npm": {
         "filePath": "dist/bundle.js",
@@ -22,7 +22,8 @@
     "endowment:rpc": {
       "dapps": true,
       "snaps": false
-    }
+    },
+    "snap_manageState": {}
   },
   "manifestVersion": "0.1"
 }
