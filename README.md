@@ -3,7 +3,8 @@ Repository for ETHSamba 23. Polichain Team
 
 # System Side
  
- - After cloning the repo you just gotta `yarn` and `yarn start` and it's gonna be up at localhost:8000
+ 
+ - After cloning the repo you just gotta `yarn` and `yarn start` on the system-snap folder, and it's gonna be up at localhost:8000
  
  - Connect to your wallet through the connect button
  
@@ -15,7 +16,7 @@ Repository for ETHSamba 23. Polichain Team
  
  # Client side
  
- - After cloning the repo you just gotta `yarn` and `yarn start` and it's gonna be up at localhost:8000
+ - After cloning the repo you just gotta `yarn` and `yarn start`  on the client-snap folder, and it's gonna be up at localhost:8000
  
  - Connect to your wallet through the connect button
  
