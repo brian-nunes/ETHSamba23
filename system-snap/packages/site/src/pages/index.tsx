@@ -5,14 +5,12 @@ import {
   connectSnap,
   getSnap,
   shouldDisplayReconnectButton,
-  generateQRcode
 } from '../utils';
 import {
   ConnectButton,
   ReconnectButton,
   GenerateQRCodeButton,
   Card,
-  QrCodeCard,
 } from '../components';
 
 const Container = styled.div`
@@ -62,43 +60,6 @@ const CardContainer = styled.div`
   margin-top: 1.5rem;
 `;
 
-const Notice = styled.div`
-  background-color: ${({ theme }) => theme.colors.background.alternative};
-  border: 1px solid ${({ theme }) => theme.colors.border.default};
-  color: ${({ theme }) => theme.colors.text.alternative};
-  border-radius: ${({ theme }) => theme.radii.default};
-  padding: 2.4rem;
-  margin-top: 2.4rem;
-  max-width: 60rem;
-  width: 100%;
-
-  & > * {
-    margin: 0;
-  }
-  ${({ theme }) => theme.mediaQueries.small} {
-    margin-top: 1.2rem;
-    padding: 1.6rem;
-  }
-`;
-
-const ErrorMessage = styled.div`
-  background-color: ${({ theme }) => theme.colors.error.muted};
-  border: 1px solid ${({ theme }) => theme.colors.error.default};
-  color: ${({ theme }) => theme.colors.error.alternative};
-  border-radius: ${({ theme }) => theme.radii.default};
-  padding: 2.4rem;
-  margin-bottom: 2.4rem;
-  margin-top: 2.4rem;
-  max-width: 60rem;
-  width: 100%;
-  ${({ theme }) => theme.mediaQueries.small} {
-    padding: 1.6rem;
-    margin-bottom: 1.2rem;
-    margin-top: 1.2rem;
-    max-width: 100%;
-  }
-`;
-
 const Index = () => {
   const [state, dispatch] = useContext(MetaMaskContext);
   const [qrCodeGenerated, setQrCodeGenerated] = useState(false);
@@ -130,8 +91,10 @@ const Index = () => {
     try {
       const QRCode = require('qrcode');
 
-      const contract = "ugabugaugabuga"
-      const code = 'ethereum:'+contract+'?amount=0&message='+message;
+      const contract = "0x2afd779a65858CFf728eEc28E38989d45207Df04"
+      //todo
+      //Fix this. Now only works for 32bits message e.g 0x7b == 123
+      const code = 'ethereum:'+contract+'?amount=0&message=0x3bc862c700000000000000000000000000000000000000000000000000000000000000'+message;
       setQrCodeGenerated(true);
 
       QRCode.toString(code, {
@@ -157,11 +120,6 @@ const Index = () => {
         Generate your QR Code with the button below!
       </Subtitle>
       <CardContainer>
-        {/* {state.error && (
-          <ErrorMessage>
-            <b>An error happened:</b> {state.error.message}
-          </ErrorMessage>
-        )} */}
         {!state.installedSnap && (
           <Card
             content={{
