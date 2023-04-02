@@ -1,0 +1,28 @@
+{
+  "version": "1.0.0",
+  "description": "QR Code Generator snap.",
+  "proposedName": "QR Code Generator",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brian-nunes/QR-Code-Metamask.git"
+  },
+  "source": {
+    "shasum": "TpcbghgKQRRbCpmQ2vdNCcRpf+JXRujhPhTf9pBUci8=",
+    "location": {
+      "npm": {
+        "filePath": "dist/bundle.js",
+        "iconPath": "images/icon.svg",
+        "packageName": "qr-code-generator-snap",
+        "registry": "https://registry.npmjs.org/"
+      }
+    }
+  },
+  "initialPermissions": {
+    "snap_dialog": {},
+    "endowment:rpc": {
+      "dapps": true,
+      "snaps": false
+    }
+  },
+  "manifestVersion": "0.1"
+}
